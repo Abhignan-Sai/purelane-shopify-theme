@@ -353,3 +353,87 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+/* ================= SHOP / PRODUCT GRID ================= */
+.purelane-sec {
+  padding: 80px 0;
+  position: relative;
+  z-index: 2;
+}
+
+.purelane-wrap {
+  max-width: var(--purelane-max-width);
+  margin: 0 auto;
+  padding: 0 clamp(20px, 4vw, 40px);
+}
+
+.purelane-panel-head {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.purelane-panel-head .kicker {
+  font-family: var(--purelane-font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--purelane-color-accent);
+}
+
+.purelane-panel-head h2 {
+  font-family: var(--purelane-font-display);
+  font-size: clamp(28px, 6vw, 42px);
+  font-weight: 800;
+  color: var(--purelane-color-surface);
+  margin-bottom: 20px;
+}
+
+.purelane-panel-head .rule {
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  justify-content: center;
+  max-width: 270px;
+  margin: 0 auto;
+}
+
+.purelane-panel-head .rule i {
+  height: 1px;
+  flex: 1;
+  background: linear-gradient(90deg, rgba(75,58,143,.34), transparent);
+}
+
+.purelane-panel-head .rule i:first-child {
+  background: linear-gradient(90deg, transparent, rgba(75,58,143,.34));
+}
+
+.purelane-panel-head .rule svg {
+  width: 16px;
+  height: 16px;
+  color: var(--purelane-color-accent);
+  flex: 0 0 auto;
+}
+
+.purelane-shelf {
+  display: grid;
+  gap: 14px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+@media(min-width: 768px) {
+  .purelane-shelf {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media(min-width: 1024px) {
+  .purelane-shelf {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.purelane-view-all {
+  margin-top: 40px;
+  text-align: center;
+}
