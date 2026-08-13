@@ -1,0 +1,36 @@
+{%- if review != blank -%}
+  <article class="purelane-glass purelane-review-card">
+    <div class="purelane-review-head">
+      {%- if review.avatar != blank -%}
+        <div class="purelane-review-avatar">
+          <img src="{{ review.avatar | image_url: width: 80 }}" alt="" loading="lazy" width="{{ review.avatar.width }}" height="{{ review.avatar.height }}">
+        </div>
+      {%- else -%}
+        <div class="purelane-review-avatar purelane-review-avatar-fallback">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        </div>
+      {%- endif -%}
+      <div class="purelane-review-meta">
+        <div class="purelane-review-st" aria-label="{{ review.rating }} out of 5 stars">
+          {%- assign rating_val = review.rating.value | default: 5 -%}
+          {%- for i in (1..5) -%}
+            {%- if i <= rating_val -%}★{%- else -%}☆{%- endif -%}
+          {%- endfor -%}
+        </div>
+        <cite>
+          {{ review.author_name }}
+          {%- if review.verified.value == true -%}
+            <svg class="verified-icon" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+          {%- endif -%}
+        </cite>
+      </div>
+    </div>
+    
+    <div class="purelane-review-body">
+      {%- if review.review_title != blank -%}
+        <h4>{{ review.review_title }}</h4>
+      {%- endif -%}
+      <p>{{ review.review_text }}</p>
+    </div>
+  </article>
+{%- endif -%}
