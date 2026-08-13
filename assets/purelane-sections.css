@@ -15,14 +15,14 @@
   content: "";
   position: absolute;
   inset: 0;
-  z-index: 1;
+  z-index: 0;
   pointer-events: none;
-  background: linear-gradient(102deg, rgba(255,255,255,.80) 0%, rgba(255,255,255,.50) 30%, rgba(255,255,255,.12) 54%, transparent 68%);
+  background: linear-gradient(102deg, rgba(255,255,255,.40) 0%, rgba(255,255,255,.20) 30%, rgba(255,255,255,.05) 54%, transparent 68%);
 }
 
 @media(max-width: 900px) {
   .purelane-hero::before {
-    background: linear-gradient(180deg, rgba(255,255,255,.62) 0%, rgba(255,255,255,.34) 36%, rgba(255,255,255,.66) 100%);
+    background: linear-gradient(180deg, rgba(255,255,255,.40) 0%, rgba(255,255,255,.20) 36%, rgba(255,255,255,.10) 100%);
   }
 }
 
@@ -210,34 +210,40 @@
 .purelane-hslide {
   position: absolute;
   inset: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  padding-right: 2%;
   opacity: 0;
   pointer-events: none;
-  transition: opacity .85s var(--purelane-ease);
+  transition: opacity .8s var(--purelane-ease);
+  background: var(--purelane-glass-bg);
+  border-radius: 24px;
+  border: 1px solid rgba(75,58,143,.13);
+  box-shadow: 0 26px 74px rgba(18,12,34,.1);
+  backdrop-filter: blur(16px) saturate(140%);
+  -webkit-backdrop-filter: blur(16px) saturate(140%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 30px;
 }
 .purelane-hslide.on {
   opacity: 1;
   pointer-events: auto;
+  z-index: 2;
 }
 .purelane-hp {
   position: relative;
   width: 100%;
   height: 100%;
   object-fit: contain;
-  object-position: center bottom;
-  opacity: 0;
-  transform: translateY(28px) scale(.94);
+  object-position: center center;
   transition: opacity .8s var(--purelane-ease), transform .8s var(--purelane-ease);
   filter: drop-shadow(0 14px 22px rgba(0,74,66,.15));
+  opacity: 0;
+  transform: translateY(20px);
 }
 .purelane-hslide.on .purelane-hp {
   opacity: 1;
   transform: none;
 }
-.purelane-hslide.on .purelane-hp:nth-child(1) { transition-delay: .06s; }
 
 /* price flag */
 .purelane-ptag {
@@ -385,7 +391,7 @@
   font-family: var(--purelane-font-display);
   font-size: clamp(28px, 6vw, 42px);
   font-weight: 800;
-  color: var(--purelane-color-surface);
+  color: var(--purelane-color-ink);
   margin-bottom: 20px;
 }
 
