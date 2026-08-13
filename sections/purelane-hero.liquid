@@ -1,0 +1,249 @@
+{{ 'purelane-sections.css' | asset_url | stylesheet_tag }}
+
+<section class="purelane-hero" data-purelane-scene="1">
+  <div class="purelane-hero-grid">
+    
+    {%- if section.blocks.size > 0 -%}
+      <div class="purelane-badges" aria-label="Product promises">
+        {%- for block in section.blocks -%}
+          <div class="purelane-badge-item" {{ block.shopify_attributes }}>
+            <span class="bi">
+              {%- case block.settings.icon -%}
+                {%- when 'plant' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/><path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/></svg>
+                {%- when 'shield' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v6.2c0 4.3 3.1 7.6 7.5 8.8 4.4-1.2 7.5-4.5 7.5-8.8V6L12 3Z"/><path d="m9 12 2.2 2.2L15.4 10"/></svg>
+                {%- when 'nochemicals' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M6.4 17.6 17.6 6.4"/></svg>
+                {%- else -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/><path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/></svg>
+              {%- endcase -%}
+            </span>
+            <span>{{ block.settings.label | newline_to_br }}</span>
+          </div>
+        {%- endfor -%}
+      </div>
+    {%- endif -%}
+
+    <div class="purelane-hero-copy">
+      <h1 class="d1 rv in">
+        {{ section.settings.heading | replace: '<em>', '<span class="lime">' | replace: '</em>', '</span>' }}
+      </h1>
+      
+      <div class="rule rv rv-d1">
+        <i></i>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/><path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/></svg>
+        <i></i>
+      </div>
+      
+      <p class="lede rv rv-d2">{{ section.settings.text }}</p>
+      
+      <div class="purelane-hero-cta rv rv-d3">
+        {%- if section.settings.button_label_1 != blank -%}
+          {% render 'purelane-button', label: section.settings.button_label_1, url: section.settings.button_link_1, style: 'primary' %}
+        {%- endif -%}
+        {%- if section.settings.button_label_2 != blank -%}
+          {% render 'purelane-button', label: section.settings.button_label_2, url: section.settings.button_link_2, style: 'ghost' %}
+        {%- endif -%}
+      </div>
+
+      {%- if section.blocks.size > 0 -%}
+        <div class="purelane-badgestrip rv rv-d4">
+          {%- for block in section.blocks -%}
+            <div {{ block.shopify_attributes }}>
+              {%- case block.settings.icon -%}
+                {%- when 'plant' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/><path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/></svg>
+                {%- when 'shield' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4.5 6v6.2c0 4.3 3.1 7.6 7.5 8.8 4.4-1.2 7.5-4.5 7.5-8.8V6L12 3Z"/><path d="m9 12 2.2 2.2L15.4 10"/></svg>
+                {%- when 'nochemicals' -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.4"/><path d="M6.4 17.6 17.6 6.4"/></svg>
+                {%- else -%}
+                  <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z"/><path d="M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z"/></svg>
+              {%- endcase -%}
+              {{ block.settings.label | newline_to_br | remove: '<br>' | strip }}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+    <div class="purelane-hero-prod" id="purelaneHeroProd">
+      <div class="purelane-hstage" id="purelaneHstage">
+        {%- assign product = section.settings.product -%}
+        
+        {%- if product != blank and product.media.size > 0 -%}
+          {%- for media in product.media -%}
+            <div class="purelane-hslide{% if forloop.first %} on{% endif %}" data-index="{{ forloop.index0 }}">
+              <img src="{{ media | image_url: width: 600 }}" alt="{{ media.alt | default: product.title | escape }}" class="purelane-hp d1" width="{{ media.width }}" height="{{ media.height }}" loading="{% if forloop.first %}eager{% else %}lazy{% endif %}">
+              
+              <div class="purelane-ptag">
+                <span class="lbl">{{ product.title }}</span>
+                <span class="val">
+                  <strong>{{ product.price | money }}</strong>
+                  {%- if product.compare_at_price > product.price -%}
+                    <s>{{ product.compare_at_price | money }}</s>
+                  {%- endif -%}
+                </span>
+                {%- if product.compare_at_price > product.price -%}
+                  {%- assign saving = product.compare_at_price | minus: product.price -%}
+                  <span class="cut">Save {{ saving | money }}</span>
+                {%- endif -%}
+              </div>
+            </div>
+          {%- endfor -%}
+        {%- else -%}
+          <div class="purelane-hslide on">
+            <div class="purelane-hp d1" style="background:var(--purelane-glass-bg); border-radius:24px; border:1px solid rgba(75,58,143,.1);">
+            </div>
+          </div>
+        {%- endif -%}
+      </div>
+      
+      {%- if product != blank and product.media.size > 1 -%}
+        <div class="purelane-hdots" id="purelaneHdots">
+          {%- for media in product.media -%}
+            <button type="button" class="{% if forloop.first %}on{% endif %}" aria-label="Show slide {{ forloop.index }}"></button>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+
+  </div>
+</section>
+
+{%- if product != blank and product.media.size > 1 -%}
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      var hstage = document.getElementById('purelaneHstage');
+      if (hstage) {
+        var hs = [].slice.call(hstage.querySelectorAll('.purelane-hslide'));
+        var hd = [].slice.call(document.querySelectorAll('#purelaneHdots button'));
+        var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        var hi = 0, htimer = null, isVisible = false;
+        
+        function hgo(n) {
+          hi = (n + hs.length) % hs.length;
+          hs.forEach(function (s, i) { s.classList.toggle('on', i === hi); });
+          hd.forEach(function (d, i) { d.classList.toggle('on', i === hi); });
+        }
+        function hplay() { 
+          if (!htimer && !reduce && isVisible) htimer = setInterval(function () { hgo(hi + 1); }, 3800); 
+        }
+        function hstop() { 
+          if (htimer) { clearInterval(htimer); htimer = null; } 
+        }
+        
+        hd.forEach(function (d, i) {
+          d.addEventListener('click', function () { hstop(); hgo(i); hplay(); });
+        });
+        
+        hstage.addEventListener('mouseenter', hstop);
+        hstage.addEventListener('mouseleave', hplay);
+        
+        if ('IntersectionObserver' in window) {
+          var observer = new IntersectionObserver(function(entries) {
+            entries.forEach(function(entry) {
+              if (entry.isIntersecting) {
+                isVisible = true;
+                hplay();
+              } else {
+                isVisible = false;
+                hstop();
+              }
+            });
+          });
+          observer.observe(document.getElementById('purelaneHeroProd'));
+        } else {
+          isVisible = true;
+          hplay();
+        }
+      }
+    });
+  </script>
+{%- endif -%}
+
+{% schema %}
+{
+  "name": "Purelane Hero",
+  "settings": [
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Clean<br>That<br><em>Lasts</em>",
+      "info": "Wrap text in <em> to highlight it. Use <br> for new lines."
+    },
+    {
+      "type": "textarea",
+      "id": "text",
+      "label": "Supporting text",
+      "default": "Homecare that works on the toughest grime, made from plants. Kind to your home, your family and the world outside it."
+    },
+    {
+      "type": "text",
+      "id": "button_label_1",
+      "label": "Primary button label",
+      "default": "Shop now"
+    },
+    {
+      "type": "url",
+      "id": "button_link_1",
+      "label": "Primary button link"
+    },
+    {
+      "type": "text",
+      "id": "button_label_2",
+      "label": "Secondary button label",
+      "default": "How it works"
+    },
+    {
+      "type": "url",
+      "id": "button_link_2",
+      "label": "Secondary button link"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Featured product"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "badge",
+      "name": "Promise Badge",
+      "limit": 4,
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "label": "Icon",
+          "options": [
+            { "value": "plant", "label": "Plant" },
+            { "value": "shield", "label": "Shield" },
+            { "value": "nochemicals", "label": "No Chemicals" }
+          ],
+          "default": "plant"
+        },
+        {
+          "type": "text",
+          "id": "label",
+          "label": "Label",
+          "default": "Plant\npowered",
+          "info": "Use a newline to split the text."
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Purelane Hero",
+      "blocks": [
+        { "type": "badge", "settings": { "icon": "plant", "label": "Plant\npowered" } },
+        { "type": "badge", "settings": { "icon": "shield", "label": "Safe for\nkids & pets" } },
+        { "type": "badge", "settings": { "icon": "nochemicals", "label": "Zero harsh\nchemicals" } }
+      ]
+    }
+  ]
+}
+{% endschema %}
