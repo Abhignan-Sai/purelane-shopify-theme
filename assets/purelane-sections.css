@@ -830,3 +830,97 @@
   color: rgba(75,58,143,.8);
   margin: 0;
 }
+
+/* ================= GLOBAL POLISH (Header, Footer, Rhythm) ================= */
+
+/* Header */
+.header-wrapper {
+  background: rgba(255, 255, 255, 0.8) !important;
+  backdrop-filter: blur(12px) !important;
+  -webkit-backdrop-filter: blur(12px) !important;
+  border-bottom: 1px solid rgba(75,58,143,0.06) !important;
+  position: sticky !important;
+  top: 0;
+  z-index: 100;
+}
+.header {
+  padding-top: 16px !important;
+  padding-bottom: 16px !important;
+}
+.header__menu-item {
+  font-family: var(--purelane-font-body) !important;
+  font-weight: 600 !important;
+  font-size: 14.5px !important;
+  color: var(--purelane-color-ink) !important;
+  letter-spacing: 0.02em !important;
+}
+
+/* Footer */
+.footer {
+  margin-top: 20px !important;
+  background: linear-gradient(180deg, rgba(75,58,143,0.02) 0%, rgba(75,58,143,0.08) 100%) !important;
+  border-top: none !important;
+  padding-top: 60px !important;
+}
+.footer-block__heading {
+  font-family: var(--purelane-font-display) !important;
+  color: var(--purelane-color-ink) !important;
+  font-size: 15px !important;
+  letter-spacing: 0.06em !important;
+  text-transform: uppercase !important;
+}
+.footer-block__details-content li a, 
+.footer-block__details-content .list-menu__item--link,
+.footer-block__details-content p {
+  font-family: var(--purelane-font-body) !important;
+  font-size: 14px !important;
+  color: rgba(75,58,143,0.7) !important;
+  padding-bottom: 6px !important;
+}
+.footer-block__details-content li a:hover {
+  color: var(--purelane-color-accent) !important;
+}
+.newsletter-form__field-wrapper input {
+  border-radius: 99px !important;
+  background: rgba(255,255,255,0.6) !important;
+  border: 1px solid rgba(75,58,143,0.15) !important;
+}
+
+/* Rhythm & Spacing */
+.purelane-sec {
+  padding: 50px 0 !important;
+}
+.purelane-hero {
+  min-height: auto !important;
+  padding: 60px 0 40px !important;
+}
+@media(min-width: 900px) {
+  .purelane-sec {
+    padding: 80px 0 !important;
+  }
+  .purelane-hero {
+    min-height: 70vh !important;
+    padding: 80px 0 60px !important;
+  }
+  .purelane-hero-grid {
+    min-height: 540px !important;
+  }
+}
+
+/* CTA Refinement */
+.purelane-product-card .purelane-btn {
+  padding: 10px 16px !important;
+  font-size: 13px !important;
+  min-height: 42px !important;
+}
+.purelane-combo .tray {
+  min-height: 130px !important;
+  padding: 16px !important;
+}
+.purelane-tiers {
+  gap: 20px !important;
+  margin-top: 12px !important;
+}
+.purelane-reviews-wrap {
+  margin-bottom: 20px !important;
+}
