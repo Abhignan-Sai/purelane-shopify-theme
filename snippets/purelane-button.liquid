@@ -1,0 +1,28 @@
+{% comment %}
+  Purelane Button Snippet
+  Accepts:
+  - label: {String} Button text
+  - url: {String} Link URL (if provided, renders as <a>)
+  - style: {String} 'primary' (default), 'ghost'
+  - size: {String} 'sm' (optional)
+  - type: {String} 'button', 'submit' (only used if url is blank)
+  - is_disabled: {Boolean}
+{% endcomment %}
+{%- liquid
+  assign class_list = 'purelane-btn purelane-btn--' | append: (style | default: 'primary')
+  if size == 'sm'
+    assign class_list = class_list | append: ' purelane-btn--sm'
+  endif
+  if is_disabled
+    assign class_list = class_list | append: ' purelane-btn--disabled'
+  endif
+-%}
+{%- if url != blank and is_disabled != true -%}
+  <a href="{{ url }}" class="{{ class_list }}">
+    {{ label }}
+  </a>
+{%- else -%}
+  <button type="{{ type | default: 'button' }}" class="{{ class_list }}" {% if is_disabled %}disabled="disabled" aria-disabled="true"{% endif %}>
+    {{ label }}
+  </button>
+{%- endif -%}

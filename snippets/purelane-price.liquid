@@ -1,0 +1,25 @@
+{% comment %}
+  Purelane Price Snippet
+  Accepts:
+  - product: {Object} Shopify Product object
+{% endcomment %}
+{%- liquid
+  assign target = product
+  assign price = target.price | default: 1999
+  assign compare_at_price = target.compare_at_price
+  assign on_sale = false
+  if compare_at_price > price
+    assign on_sale = true
+  endif
+-%}
+<div class="purelane-price{% if on_sale %} purelane-price--on-sale{% endif %}">
+  {%- if on_sale -%}
+    <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+    <s class="purelane-price__compare-amount">{{ compare_at_price | money }}</s>
+    <span class="visually-hidden">{{ 'products.product.price.sale_price' | t }}</span>
+    <strong class="purelane-price__sale-amount">{{ price | money }}</strong>
+  {%- else -%}
+    <span class="visually-hidden">{{ 'products.product.price.regular_price' | t }}</span>
+    <strong class="purelane-price__amount">{{ price | money }}</strong>
+  {%- endif -%}
+</div>

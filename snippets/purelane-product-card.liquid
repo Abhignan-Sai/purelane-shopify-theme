@@ -1,0 +1,66 @@
+{% comment %}
+  Purelane Product Card Snippet
+  Accepts:
+  - product: {Object} Shopify Product object
+{% endcomment %}
+{{ 'purelane-components.css' | asset_url | stylesheet_tag }}
+{%- liquid
+  assign on_sale = false
+  if product.compare_at_price > product.price
+    assign on_sale = true
+  endif
+  assign sold_out = true
+  if product.available or product == blank
+    assign sold_out = false
+  endif
+-%}
+<div class="purelane-card purelane-card--product purelane-glass">
+  <div class="purelane-card__media">
+    <a href="{{ product.url | default: '#' }}" class="purelane-card__link" tabindex="-1" aria-hidden="true">
+      {%- if product.featured_media -%}
+        <img
+          src="{{ product.featured_media | image_url: width: 600 }}"
+          alt="{{ product.featured_media.alt | escape }}"
+          class="purelane-card__image"
+          loading="lazy"
+          width="{{ product.featured_media.width }}"
+          height="{{ product.featured_media.height }}"
+        >
+      {%- else -%}
+        <div class="purelane-card__image-placeholder">
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </div>
+      {%- endif -%}
+    </a>
+    
+    <div class="purelane-card__badges">
+      {%- if sold_out -%}
+        {% render 'purelane-badge', label: 'Sold out', style: 'sold-out' %}
+      {%- elsif on_sale -%}
+        {% render 'purelane-badge', label: 'Sale', style: 'sale' %}
+      {%- endif -%}
+    </div>
+  </div>
+
+  <div class="purelane-card__content">
+    <h3 class="purelane-card__title">
+      <a href="{{ product.url | default: '#' }}">{{ product.title | default: 'Example Product' }}</a>
+    </h3>
+    
+    {% render 'purelane-price', product: product %}
+
+    <div class="purelane-card__actions">
+      {%- if sold_out -%}
+        {% render 'purelane-button', label: 'Out of stock', style: 'primary', is_disabled: true %}
+      {%- else -%}
+        {%- assign product_form_id = 'quick-add-' | append: product.id | append: '-' | append: section.id -%}
+        <product-form>
+          {%- form 'product', product, id: product_form_id, class: 'purelane-card__form', novalidate: 'novalidate', data-type: 'add-to-cart-form' -%}
+            <input type="hidden" name="id" value="{{ product.selected_or_first_available_variant.id }}">
+            {% render 'purelane-button', label: 'Add to cart', style: 'primary', type: 'submit' %}
+          {%- endform -%}
+        </product-form>
+      {%- endif -%}
+    </div>
+  </div>
+</div>

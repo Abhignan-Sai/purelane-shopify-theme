@@ -1,0 +1,9 @@
+{% comment %}
+  Purelane Badge Snippet
+  Accepts:
+  - label: {String} Badge text
+  - style: {String} 'sale', 'sold-out', 'new'
+{% endcomment %}
+<span class="purelane-badge purelane-badge--{{ style | default: 'default' }}">
+  {{ label }}
+</span>
