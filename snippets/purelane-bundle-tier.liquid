@@ -1,0 +1,55 @@
+{%- if bundle != blank -%}
+  {%- assign bundle_product = bundle.bundle_product.value -%}
+  {%- assign included_products = bundle.included_products.value -%}
+  {%- assign badge = bundle.badge -%}
+
+  <article class="purelane-glass purelane-tier{% if is_featured %} purelane-tier-featured{% endif %}">
+    {%- if badge != blank -%}
+      <span class="tag">{{ badge }}</span>
+    {%- endif -%}
+    
+    <div class="tierpix" aria-hidden="true">
+      {%- if bundle.image != blank -%}
+        <img src="{{ bundle.image | image_url: width: 300 }}" alt="{{ bundle_product.title | escape }}" loading="lazy" class="d1" width="{{ bundle.image.width }}" height="{{ bundle.image.height }}">
+      {%- elsif bundle_product.featured_media != blank -%}
+        <img src="{{ bundle_product.featured_media | image_url: width: 300 }}" alt="{{ bundle_product.title | escape }}" loading="lazy" class="d1" width="{{ bundle_product.featured_media.width }}" height="{{ bundle_product.featured_media.height }}">
+      {%- else -%}
+        {{ 'collection-1' | placeholder_svg_tag: 'placeholder-svg d1' }}
+      {%- endif -%}
+    </div>
+    
+    <div class="qty">
+      {{ included_products.count | default: 3 }}<small>Products</small>
+    </div>
+    
+    <div class="price">
+      <strong>{{ bundle_product.price | money }}</strong>
+      {%- if bundle_product.compare_at_price > bundle_product.price -%}
+        <s>{{ bundle_product.compare_at_price | money }}</s>
+      {%- endif -%}
+    </div>
+    
+    <p class="body-s" style="font-size:12px">{{ bundle.description }}</p>
+    
+    <ul>
+      {%- for prod in included_products limit: 3 -%}
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+          {{ prod.title }}
+        </li>
+      {%- else -%}
+        <li>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="m5 13 4 4L19 7"/></svg>
+          Build your custom box
+        </li>
+      {%- endfor -%}
+    </ul>
+    
+    {%- assign cta_label = bundle.cta_label | default: 'Build this box' -%}
+    {%- if bundle_product.available -%}
+      {% render 'purelane-button', label: cta_label, url: bundle_product.url, style: 'primary', is_full: true %}
+    {%- else -%}
+      {% render 'purelane-button', label: 'Sold out', url: '#', style: 'ghost', is_full: true %}
+    {%- endif -%}
+  </article>
+{%- endif -%}

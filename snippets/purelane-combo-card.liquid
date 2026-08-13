@@ -1,0 +1,61 @@
+{%- if product != blank -%}
+  <article class="purelane-glass purelane-combo">
+    <div class="tray">
+      {%- if badge != blank -%}
+        <span class="save">{{ badge }}</span>
+      {%- elsif product.compare_at_price > product.price -%}
+        {%- assign saving = product.compare_at_price | minus: product.price -%}
+        <span class="save">You save {{ saving | money }}</span>
+      {%- endif -%}
+      <div class="stack">
+        <span class="it">
+          {%- if product.featured_media -%}
+            <img src="{{ product.featured_media | image_url: width: 200 }}" alt="{{ product.title | escape }}" loading="lazy" width="{{ product.featured_media.width }}" height="{{ product.featured_media.height }}">
+          {%- else -%}
+            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+          {%- endif -%}
+        </span>
+      </div>
+    </div>
+    <div class="body">
+      <h3>{{ product.title }}</h3>
+      {%- if description != blank -%}
+        <p class="inc">{{ description }}</p>
+      {%- endif -%}
+      <div class="prow">
+        <strong>{{ product.price | money }}</strong>
+        {%- if product.compare_at_price > product.price -%}
+          <s>{{ product.compare_at_price | money }}</s>
+          {%- assign saving = product.compare_at_price | minus: product.price -%}
+          <em>Save {{ saving | money }}</em>
+        {%- endif -%}
+      </div>
+      <div class="fine">Inclusive of all taxes &middot; COD available</div>
+      {%- if product.available -%}
+        {% render 'purelane-button', label: 'Shop combo', url: product.url, style: 'primary', is_full: true %}
+      {%- else -%}
+        {% render 'purelane-button', label: 'Sold out', url: '#', style: 'ghost', is_full: true %}
+      {%- endif -%}
+    </div>
+  </article>
+{%- else -%}
+  <article class="purelane-glass purelane-combo">
+    <div class="tray">
+      <span class="save">Save ₹200</span>
+      <div class="stack">
+        <span class="it">
+          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+        </span>
+      </div>
+    </div>
+    <div class="body">
+      <h3>Combo Name</h3>
+      <p class="inc">Add a product to this block to display a combo.</p>
+      <div class="prow">
+        <strong>₹799</strong>
+        <s>₹999</s>
+      </div>
+      {% render 'purelane-button', label: 'Shop combo', url: '#', style: 'ghost', is_full: true %}
+    </div>
+  </article>
+{%- endif -%}
