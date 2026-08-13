@@ -1,0 +1,40 @@
+{% comment %}
+  Global background layer for Purelane homepage cinematic scenes.
+{% endcomment %}
+
+{% if template.name == 'index' %}
+<style>
+  .purelane-cinematic {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background: var(--purelane-color-brand);
+    transition: background 1.5s var(--purelane-ease);
+  }
+
+  /* Scenes based on data-active-scene */
+  .purelane-cinematic[data-active-scene="1"] {
+    background: linear-gradient(178deg, #1ea38d 0%, #0b8578 22%, #017069 48%, #4b3a8f 74%, #01524e 100%);
+  }
+  .purelane-cinematic[data-active-scene="2"] {
+    background: linear-gradient(178deg, #12907f 0%, #04756e 26%, #4b3a8f 58%, #01514d 100%);
+  }
+  .purelane-cinematic[data-active-scene="3"] {
+    background: linear-gradient(178deg, #067c71 0%, #00625d 30%, #014e4a 64%, #023c39 100%);
+  }
+  .purelane-cinematic[data-active-scene="4"] {
+    background: linear-gradient(178deg, #036359 0%, #014b46 32%, #013431 66%, #012422 100%);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .purelane-cinematic {
+      transition: none;
+    }
+  }
+</style>
+
+<div id="PurelaneCinematicLayer" class="purelane-cinematic" data-active-scene="1" aria-hidden="true">
+  {% comment %} Static fallback is handled by CSS (background: var(--purelane-color-brand)) {% endcomment %}
+</div>
+{% endif %}
