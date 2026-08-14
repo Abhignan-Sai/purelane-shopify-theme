@@ -510,7 +510,7 @@
   gap: 8px;
 }
 .purelane-combo .it img {
-  height: 100px;
+  height: 200px;
   width: auto;
   object-fit: contain;
   filter: drop-shadow(0 10px 15px rgba(0,0,0,0.1));

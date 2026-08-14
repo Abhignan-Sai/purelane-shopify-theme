@@ -17,9 +17,15 @@
     <div class="purelane-tiers">
       {%- for block in section.blocks -%}
         {%- assign bundle_metaobject = block.settings.bundle -%}
+        {%- if bundle_metaobject == blank -%}
+          {%- if forloop.index == 1 -%}{%- assign bundle_metaobject = shop.metaobjects.bundle_relationship['most-popular'] -%}
+          {%- elsif forloop.index == 2 -%}{%- assign bundle_metaobject = shop.metaobjects.bundle_relationship['best-value'] -%}
+          {%- elsif forloop.index == 3 -%}{%- assign bundle_metaobject = shop.metaobjects.bundle_relationship['targeted-clean'] -%}
+          {%- endif -%}
+        {%- endif -%}
         {%- if bundle_metaobject != blank -%}
           {%- assign is_featured = false -%}
-          {%- assign badge_downcase = bundle_metaobject.badge | downcase -%}
+          {%- assign badge_downcase = bundle_metaobject.badge.value | downcase -%}
           {%- if badge_downcase == 'most popular' -%}
             {%- assign is_featured = true -%}
           {%- endif -%}

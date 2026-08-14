@@ -39,10 +39,119 @@
       "settings": {
         "collection": "best-sellers"
       }
+    },
+    "purelane_combos": {
+      "type": "purelane-combos",
+      "blocks": {
+        "combo_1": {
+          "type": "combo",
+          "settings": {
+            "product": "hard-water-solution-kit"
+          }
+        },
+        "combo_2": {
+          "type": "combo",
+          "settings": {
+            "product": "kitchen-essentials-bundle"
+          }
+        },
+        "combo_3": {
+          "type": "combo",
+          "settings": {
+            "product": "laundry-care-bundle"
+          }
+        }
+      },
+      "block_order": [
+        "combo_1",
+        "combo_2",
+        "combo_3"
+      ]
+    },
+    "purelane_bundles": {
+      "type": "purelane-bundles",
+      "blocks": {
+        "tier_1": {
+          "type": "tier",
+          "settings": {
+            "bundle": "most-popular"
+          }
+        },
+        "tier_2": {
+          "type": "tier",
+          "settings": {
+            "bundle": "best-value"
+          }
+        },
+        "tier_3": {
+          "type": "tier",
+          "settings": {
+            "bundle": "targeted-clean"
+          }
+        }
+      },
+      "block_order": [
+        "tier_1",
+        "tier_2",
+        "tier_3"
+      ]
+    },
+    "purelane_reviews": {
+      "type": "purelane-reviews",
+      "blocks": {
+        "review_1": {
+          "type": "review",
+          "settings": {
+            "review": "anita"
+          }
+        },
+        "review_2": {
+          "type": "review",
+          "settings": {
+            "review": "priya"
+          }
+        },
+        "review_3": {
+          "type": "review",
+          "settings": {
+            "review": "rahul"
+          }
+        },
+        "review_4": {
+          "type": "review",
+          "settings": {
+            "review": "neha"
+          }
+        },
+        "review_5": {
+          "type": "review",
+          "settings": {
+            "review": "arjun"
+          }
+        },
+        "review_6": {
+          "type": "review",
+          "settings": {
+            "review": "meera"
+          }
+        }
+      },
+      "block_order": [
+        "review_1",
+        "review_2",
+        "review_3",
+        "review_4",
+        "review_5",
+        "review_6"
+      ]
     }
   },
   "order": [
     "purelane_hero",
-    "purelane_product_grid"
+    "purelane_product_grid",
+    "purelane_combos",
+    "purelane_bundles",
+    "purelane_reviews"
   ]
 }
+

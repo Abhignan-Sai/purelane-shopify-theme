@@ -27,7 +27,17 @@
     
     {%- assign has_valid_reviews = false -%}
     {%- for block in section.blocks -%}
-      {%- if block.settings.review != blank -%}
+      {%- assign review_metaobject = block.settings.review -%}
+      {%- if review_metaobject == blank -%}
+        {%- if forloop.index == 1 -%}{%- assign review_metaobject = shop.metaobjects.review['anita'] -%}
+        {%- elsif forloop.index == 2 -%}{%- assign review_metaobject = shop.metaobjects.review['priya'] -%}
+        {%- elsif forloop.index == 3 -%}{%- assign review_metaobject = shop.metaobjects.review['rahul'] -%}
+        {%- elsif forloop.index == 4 -%}{%- assign review_metaobject = shop.metaobjects.review['neha'] -%}
+        {%- elsif forloop.index == 5 -%}{%- assign review_metaobject = shop.metaobjects.review['arjun'] -%}
+        {%- elsif forloop.index == 6 -%}{%- assign review_metaobject = shop.metaobjects.review['meera'] -%}
+        {%- endif -%}
+      {%- endif -%}
+      {%- if review_metaobject != blank -%}
         {%- assign has_valid_reviews = true -%}
         {%- break -%}
       {%- endif -%}
@@ -39,6 +49,15 @@
           <div class="purelane-reviews-marquee-track">
             {%- for block in section.blocks -%}
               {%- assign review_metaobject = block.settings.review -%}
+              {%- if review_metaobject == blank -%}
+                {%- if forloop.index == 1 -%}{%- assign review_metaobject = shop.metaobjects.review['anita'] -%}
+                {%- elsif forloop.index == 2 -%}{%- assign review_metaobject = shop.metaobjects.review['priya'] -%}
+                {%- elsif forloop.index == 3 -%}{%- assign review_metaobject = shop.metaobjects.review['rahul'] -%}
+                {%- elsif forloop.index == 4 -%}{%- assign review_metaobject = shop.metaobjects.review['neha'] -%}
+                {%- elsif forloop.index == 5 -%}{%- assign review_metaobject = shop.metaobjects.review['arjun'] -%}
+                {%- elsif forloop.index == 6 -%}{%- assign review_metaobject = shop.metaobjects.review['meera'] -%}
+                {%- endif -%}
+              {%- endif -%}
               {%- if review_metaobject != blank -%}
                 {%- render 'purelane-review-card', review: review_metaobject -%}
               {%- endif -%}
@@ -46,6 +65,15 @@
             {%- comment -%}Duplicate for infinite scrolling loop{%- endcomment -%}
             {%- for block in section.blocks -%}
               {%- assign review_metaobject = block.settings.review -%}
+              {%- if review_metaobject == blank -%}
+                {%- if forloop.index == 1 -%}{%- assign review_metaobject = shop.metaobjects.review['anita'] -%}
+                {%- elsif forloop.index == 2 -%}{%- assign review_metaobject = shop.metaobjects.review['priya'] -%}
+                {%- elsif forloop.index == 3 -%}{%- assign review_metaobject = shop.metaobjects.review['rahul'] -%}
+                {%- elsif forloop.index == 4 -%}{%- assign review_metaobject = shop.metaobjects.review['neha'] -%}
+                {%- elsif forloop.index == 5 -%}{%- assign review_metaobject = shop.metaobjects.review['arjun'] -%}
+                {%- elsif forloop.index == 6 -%}{%- assign review_metaobject = shop.metaobjects.review['meera'] -%}
+                {%- endif -%}
+              {%- endif -%}
               {%- if review_metaobject != blank -%}
                 {%- render 'purelane-review-card', review: review_metaobject -%}
               {%- endif -%}
@@ -53,6 +81,15 @@
             {%- comment -%}Triplicate just to be safe on ultra-wide screens if few blocks exist{%- endcomment -%}
             {%- for block in section.blocks -%}
               {%- assign review_metaobject = block.settings.review -%}
+              {%- if review_metaobject == blank -%}
+                {%- if forloop.index == 1 -%}{%- assign review_metaobject = shop.metaobjects.review['anita'] -%}
+                {%- elsif forloop.index == 2 -%}{%- assign review_metaobject = shop.metaobjects.review['priya'] -%}
+                {%- elsif forloop.index == 3 -%}{%- assign review_metaobject = shop.metaobjects.review['rahul'] -%}
+                {%- elsif forloop.index == 4 -%}{%- assign review_metaobject = shop.metaobjects.review['neha'] -%}
+                {%- elsif forloop.index == 5 -%}{%- assign review_metaobject = shop.metaobjects.review['arjun'] -%}
+                {%- elsif forloop.index == 6 -%}{%- assign review_metaobject = shop.metaobjects.review['meera'] -%}
+                {%- endif -%}
+              {%- endif -%}
               {%- if review_metaobject != blank -%}
                 {%- render 'purelane-review-card', review: review_metaobject -%}
               {%- endif -%}

@@ -1,7 +1,7 @@
 {%- if bundle != blank -%}
   {%- assign bundle_product = bundle.bundle_product.value -%}
   {%- assign included_products = bundle.included_products.value -%}
-  {%- assign badge = bundle.badge -%}
+  {%- assign badge = bundle.badge.value -%}
 
   <article class="purelane-glass purelane-tier{% if is_featured %} purelane-tier-featured{% endif %}">
     {%- if badge != blank -%}
@@ -9,8 +9,9 @@
     {%- endif -%}
     
     <div class="tierpix" aria-hidden="true">
-      {%- if bundle.image != blank -%}
-        <img src="{{ bundle.image | image_url: width: 300 }}" alt="{{ bundle_product.title | escape }}" loading="lazy" class="d1" width="{{ bundle.image.width }}" height="{{ bundle.image.height }}">
+      {%- assign bundle_image = bundle.image.value -%}
+      {%- if bundle_image != blank -%}
+        <img src="{{ bundle_image | image_url: width: 300 }}" alt="{{ bundle_product.title | escape }}" loading="lazy" class="d1" width="{{ bundle_image.width }}" height="{{ bundle_image.height }}">
       {%- elsif bundle_product.featured_media != blank -%}
         <img src="{{ bundle_product.featured_media | image_url: width: 300 }}" alt="{{ bundle_product.title | escape }}" loading="lazy" class="d1" width="{{ bundle_product.featured_media.width }}" height="{{ bundle_product.featured_media.height }}">
       {%- else -%}
@@ -29,7 +30,7 @@
       {%- endif -%}
     </div>
     
-    <p class="body-s" style="font-size:12px">{{ bundle.description }}</p>
+    <p class="body-s" style="font-size:12px">{{ bundle.description.value }}</p>
     
     <ul>
       {%- for prod in included_products limit: 3 -%}
@@ -45,7 +46,7 @@
       {%- endfor -%}
     </ul>
     
-    {%- assign cta_label = bundle.cta_label | default: 'Build this box' -%}
+    {%- assign cta_label = bundle.cta_label.value | default: 'Build this box' -%}
     {%- if bundle_product.available -%}
       {% render 'purelane-button', label: cta_label, url: bundle_product.url, style: 'primary', is_full: true %}
     {%- else -%}
