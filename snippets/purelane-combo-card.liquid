@@ -5,29 +5,44 @@
         <span class="save">{{ badge }}</span>
       {%- elsif product.compare_at_price > product.price -%}
         {%- assign saving = product.compare_at_price | minus: product.price -%}
-        <span class="save">You save {{ saving | money }}</span>
+        <span class="save">Save {{ saving | money_without_trailing_zeros }}</span>
+      {%- endif -%}
+      {%- if product.tags contains 'Bestseller' or product.tags contains 'Popular' -%}
+        <span class="flag">Popular</span>
       {%- endif -%}
       <div class="stack">
-        <span class="it">
-          {%- if product.featured_media -%}
-            <img src="{{ product.featured_media | image_url: width: 200 }}" alt="{{ product.title | escape }}" loading="lazy" width="{{ product.featured_media.width }}" height="{{ product.featured_media.height }}">
-          {%- else -%}
-            {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-          {%- endif -%}
-        </span>
+        {%- if product.media.size > 1 -%}
+          {%- for media in product.media limit: 3 -%}
+            <span class="it">
+              <img class="pimg" src="{{ media | image_url: width: 100 }}" alt="{{ media.alt | escape }}" loading="lazy" width="{{ media.width }}" height="{{ media.height }}">
+            </span>
+            {%- if forloop.index < product.media.size and forloop.index < 3 -%}
+              <span class="plus">+</span>
+            {%- endif -%}
+          {%- endfor -%}
+        {%- else -%}
+          <span class="it">
+            {%- if product.featured_media -%}
+              <img class="pimg" src="{{ product.featured_media | image_url: width: 200 }}" alt="{{ product.title | escape }}" loading="lazy" width="{{ product.featured_media.width }}" height="{{ product.featured_media.height }}">
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+          </span>
+        {%- endif -%}
       </div>
     </div>
     <div class="body">
       <h3>{{ product.title }}</h3>
+      <div class="cnt">{{ product.metafields.custom.item_count | default: "Bundle items" }}</div>
       {%- if description != blank -%}
         <p class="inc">{{ description }}</p>
       {%- endif -%}
       <div class="prow">
-        <strong>{{ product.price | money }}</strong>
+        <strong>{{ product.price | money_without_trailing_zeros }}</strong>
         {%- if product.compare_at_price > product.price -%}
-          <s>{{ product.compare_at_price | money }}</s>
+          <s>{{ product.compare_at_price | money_without_trailing_zeros }}</s>
           {%- assign saving = product.compare_at_price | minus: product.price -%}
-          <em>Save {{ saving | money }}</em>
+          <em>Save {{ saving | money_without_trailing_zeros }}</em>
         {%- endif -%}
       </div>
       <div class="fine">Inclusive of all taxes &middot; COD available</div>
@@ -43,19 +58,22 @@
     <div class="tray">
       <span class="save">Save ₹200</span>
       <div class="stack">
-        <span class="it">
-          {{ 'product-1' | placeholder_svg_tag: 'placeholder-svg' }}
-        </span>
+        <span class="it">{{ 'product-1' | placeholder_svg_tag: 'placeholder-svg pimg' }}</span>
+        <span class="plus">+</span>
+        <span class="it">{{ 'product-2' | placeholder_svg_tag: 'placeholder-svg pimg' }}</span>
       </div>
     </div>
     <div class="body">
       <h3>Combo Name</h3>
+      <div class="cnt">2 ITEMS</div>
       <p class="inc">Add a product to this block to display a combo.</p>
       <div class="prow">
         <strong>₹799</strong>
         <s>₹999</s>
+        <em>Save ₹200</em>
       </div>
-      {% render 'purelane-button', label: 'Shop combo', url: '#', style: 'ghost', is_full: true %}
+      <div class="fine">Inclusive of all taxes &middot; COD available</div>
+      {% render 'purelane-button', label: 'Shop combo', url: '#', style: 'primary', is_full: true %}
     </div>
   </article>
 {%- endif -%}

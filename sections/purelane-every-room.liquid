@@ -1,0 +1,81 @@
+{{ 'purelane-sections.css' | asset_url | stylesheet_tag }}
+{{ 'purelane-components.css' | asset_url | stylesheet_tag }}
+
+<section class="purelane-sec purelane-every-room-wrap">
+  <div class="purelane-wrap">
+    <div class="purelane-glass purelane-range">
+      <div class="purelane-range-head">
+        <div>
+          {%- if section.settings.kicker != blank -%}
+            <span class="purelane-kicker">{{ section.settings.kicker }}</span>
+          {%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="purelane-d2">{{ section.settings.heading }}</h2>
+          {%- endif -%}
+        </div>
+        {%- if section.settings.description != blank -%}
+          <p class="purelane-lede purelane-d2" style="max-width:20ch">{{ section.settings.description }}</p>
+        {%- endif -%}
+      </div>
+      <div class="purelane-stripwrap">
+        <div class="purelane-rangerow">
+          {%- assign collection = section.settings.collection -%}
+          {%- if collection != blank and collection.products_count > 0 -%}
+            {%- for product in collection.products limit: 14 -%}
+              <a href="{{ product.url }}" class="purelane-rangerow-item">
+                <img src="{{ product.featured_media | image_url: width: 300 }}" alt="{{ product.title | escape }}" loading="lazy" class="purelane-pimg" width="{{ product.featured_media.width }}" height="{{ product.featured_media.height }}">
+              </a>
+            {%- endfor -%}
+          {%- else -%}
+            <span class="purelane-pimg p-floor" role="img" aria-label="Purelane natural herbal floor cleaner"></span>
+            <span class="purelane-pimg p-tap" role="img" aria-label="Purelane tap cleaner and limescale remover"></span>
+            <span class="purelane-pimg p-kitchen" role="img" aria-label="Purelane foaming kitchen cleaner"></span>
+            <span class="purelane-pimg p-toilet" role="img" aria-label="Purelane non-toxic toilet cleaner"></span>
+            <span class="purelane-pimg p-laundry" role="img" aria-label="Purelane natural laundry detergent"></span>
+            <span class="purelane-pimg p-dish" role="img" aria-label="Purelane organic dishwash liquid gel"></span>
+            <span class="purelane-pimg p-metal" role="img" aria-label="Purelane copper, bronze and brass cleaner"></span>
+            <span class="purelane-pimg p-wm" role="img" aria-label="Purelane washing machine cleaner and descaler"></span>
+            <span class="purelane-pimg p-handwash" role="img" aria-label="Purelane gentle hydrating liquid handwash"></span>
+            <span class="purelane-pimg p-eraser" role="img" aria-label="Purelane magic eraser"></span>
+          {%- endif -%}
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Every Room, One Shelf",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "The full range"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Every room, one shelf"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Floors, taps, kitchen, laundry, bathroom and hands. Fourteen plant-based formulas that replace every harsh bottle under your sink."
+    },
+    {
+      "type": "collection",
+      "id": "collection",
+      "label": "Collection"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Every Room, One Shelf"
+    }
+  ]
+}
+{% endschema %}

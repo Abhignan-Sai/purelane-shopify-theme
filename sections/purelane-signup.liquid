@@ -1,0 +1,62 @@
+{{ 'purelane-sections.css' | asset_url | stylesheet_tag }}
+{{ 'purelane-components.css' | asset_url | stylesheet_tag }}
+
+<section class="purelane-sec purelane-signup-wrap">
+  <div class="purelane-wrap">
+    <div class="purelane-glass purelane-panel-head purelane-panel-head-bg purelane-signup" style="text-align: center;">
+      {%- if section.settings.kicker != blank -%}
+        <span class="purelane-kicker">{{ section.settings.kicker }}</span>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="purelane-d2" style="margin-top: 12px; margin-bottom: 12px;">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+      {%- if section.settings.description != blank -%}
+        <p class="purelane-lede" style="margin: 0 auto 24px; max-width: 40ch;">{{ section.settings.description }}</p>
+      {%- endif -%}
+      
+      {% form 'customer', class: 'purelane-form' %}
+        <div class="purelane-form-row">
+          <input type="email" name="contact[email]" id="Email" placeholder="Enter your email address" required class="purelane-input">
+          <button type="submit" class="purelane-btn purelane-btn--primary">{{ section.settings.cta_label | default: 'Join the list' }}</button>
+        </div>
+      {% endform %}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Signup CTA",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Let's keep in touch"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "10% off your first order"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "label": "Description",
+      "default": "Only the good stuff. Product launches, home care tips, and exclusive offers. No spam ever."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button Label",
+      "default": "Join the list"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Signup CTA"
+    }
+  ]
+}
+{% endschema %}

@@ -15,7 +15,15 @@
   endif
 -%}
 <div class="purelane-card purelane-card--product purelane-glass">
-  <div class="purelane-card__media">
+  <div class="purelane-card__media purelane-shot">
+    <div class="purelane-card__badges purelane-pill">
+      {%- if sold_out -%}
+        {% render 'purelane-badge', label: 'Sold out', style: 'sold-out' %}
+      {%- elsif on_sale -%}
+        {% render 'purelane-badge', label: 'Sale', style: 'sale' %}
+      {%- endif -%}
+    </div>
+    
     <a href="{{ product.url | default: '#' }}" class="purelane-card__link" tabindex="-1" aria-hidden="true">
       {%- if product.featured_media -%}
         <img
@@ -32,14 +40,6 @@
         </div>
       {%- endif -%}
     </a>
-    
-    <div class="purelane-card__badges">
-      {%- if sold_out -%}
-        {% render 'purelane-badge', label: 'Sold out', style: 'sold-out' %}
-      {%- elsif on_sale -%}
-        {% render 'purelane-badge', label: 'Sale', style: 'sale' %}
-      {%- endif -%}
-    </div>
   </div>
 
   <div class="purelane-card__content">

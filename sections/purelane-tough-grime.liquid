@@ -1,0 +1,201 @@
+{{ 'purelane-sections.css' | asset_url | stylesheet_tag }}
+
+<section class="purelane-sec purelane-tough-wrap" id="proof" data-purelane-scene="3">
+  <div class="purelane-wrap">
+    <div class="purelane-glass purelane-sec-pad purelane-reveal">
+      <div class="purelane-tough">
+        <div class="purelane-tough__header">
+          {%- if section.settings.kicker != blank -%}
+            <span class="purelane-kicker">{{ section.settings.kicker }}</span>
+          {%- endif -%}
+          {%- if section.settings.heading != blank -%}
+            <h2 class="purelane-d2">{{ section.settings.heading | newline_to_br }}</h2>
+          {%- endif -%}
+          {%- if section.settings.supporting_text != blank -%}
+            <p class="purelane-body-s" style="max-width:40ch">{{ section.settings.supporting_text | newline_to_br }}</p>
+          {%- endif -%}
+          {%- if section.settings.cta_label != blank and section.settings.cta_url != blank -%}
+            <div style="margin-top: 22px;">
+              {% render 'purelane-button', label: section.settings.cta_label, url: section.settings.cta_url, style: 'primary' %}
+            </div>
+          {%- endif -%}
+        </div>
+        
+        <div class="purelane-glass-bg purelane-tough__showcase">
+          <div class="purelane-tough__showcase-frame">
+            {%- liquid
+              assign product_image = blank
+              if section.settings.override_image != blank
+                assign product_image = section.settings.override_image
+              elsif section.settings.product != blank and section.settings.product.featured_media != blank
+                assign product_image = section.settings.product.featured_media
+              endif
+            -%}
+            
+            {%- if product_image != blank -%}
+              <img src="{{ product_image | image_url: width: 400 }}" alt="{{ product_image.alt | default: section.settings.product.title | escape }}" loading="lazy" width="{{ product_image.width }}" height="{{ product_image.height }}">
+            {%- else -%}
+              {{ 'product-1' | placeholder_svg_tag: 'purelane-placeholder-svg' }}
+            {%- endif -%}
+          </div>
+          {%- if section.settings.product != blank or section.settings.product_note != blank -%}
+            <div class="purelane-tough__showcase-cap">
+              {%- if section.settings.product != blank -%}
+                <b>{{ section.settings.product.title }}</b>
+              {%- else -%}
+                <b>Product name</b>
+              {%- endif -%}
+              {%- if section.settings.product_note != blank -%}
+                <span>{{ section.settings.product_note }}</span>
+              {%- endif -%}
+            </div>
+          {%- endif -%}
+          <div class="purelane-tough__showcase-dots">
+            <i class="on"></i><i></i><i></i>
+          </div>
+        </div>
+      </div>
+      
+      {%- if section.blocks.size > 0 -%}
+        <div class="purelane-glass-bg purelane-tough__stats">
+          {%- for block in section.blocks -%}
+            <div class="purelane-tough__stat" {{ block.shopify_attributes }}>
+              {%- if block.settings.value != blank -%}
+                <div class="purelane-tough__stat-ring">{{ block.settings.value }}</div>
+              {%- endif -%}
+              {%- if block.settings.title != blank -%}
+                <h5>{{ block.settings.title }}</h5>
+              {%- endif -%}
+              {%- if block.settings.description != blank -%}
+                <p>{{ block.settings.description }}</p>
+              {%- endif -%}
+            </div>
+          {%- endfor -%}
+        </div>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Tough on Grime",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Why it works"
+    },
+    {
+      "type": "textarea",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Tough on grime.\nGentle on everything else."
+    },
+    {
+      "type": "textarea",
+      "id": "supporting_text",
+      "label": "Supporting text",
+      "default": "Every formula is built on plant-derived cleansers and essential oils. It behaves exactly like the cleaner you are used to, minus the things you never signed up for."
+    },
+    {
+      "type": "text",
+      "id": "cta_label",
+      "label": "Button label",
+      "default": "See the ingredient list"
+    },
+    {
+      "type": "url",
+      "id": "cta_url",
+      "label": "Button link"
+    },
+    {
+      "type": "header",
+      "content": "Product Showcase"
+    },
+    {
+      "type": "product",
+      "id": "product",
+      "label": "Product"
+    },
+    {
+      "type": "image_picker",
+      "id": "override_image",
+      "label": "Override image",
+      "info": "Optional. Replaces the product's featured media."
+    },
+    {
+      "type": "text",
+      "id": "product_note",
+      "label": "Product Note",
+      "default": "Foam lifts grease, no scrubbing"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "stat",
+      "name": "Stat",
+      "settings": [
+        {
+          "type": "text",
+          "id": "value",
+          "label": "Value",
+          "default": "99.9%"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Germ kill"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "label": "Description",
+          "default": "Tested against germs and bacteria"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Tough on Grime",
+      "blocks": [
+        {
+          "type": "stat",
+          "settings": {
+            "value": "99.9%",
+            "title": "Germ kill",
+            "description": "Tested against germs and bacteria"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "0%",
+            "title": "Sulphates",
+            "description": "No SLS, chlorine or parabens"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "100%",
+            "title": "Plant based",
+            "description": "Cleansers derived from plants"
+          }
+        },
+        {
+          "type": "stat",
+          "settings": {
+            "value": "4.8",
+            "title": "Rated",
+            "description": "Across 8,000+ verified reviews"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

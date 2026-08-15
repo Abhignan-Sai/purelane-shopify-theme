@@ -144,14 +144,206 @@
         "review_5",
         "review_6"
       ]
+    },
+    "purelane_nature": {
+      "type": "purelane-nature",
+      "blocks": {
+        "ingredient_1": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Coconut",
+            "description": "Plant-derived cleansers that lift grease",
+            "custom_svg": "<svg viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#ece6f7\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <circle cx=\"50\" cy=\"62\" r=\"25\"/>\n  <path d=\"M31 53c9-6 29-6 38 0\" stroke=\"#f0a03c\"/>\n  <path d=\"M41 63c4 8 14 8 18 0\" opacity=\".55\"/>\n  <path d=\"M50 37V25\"/>\n  <path d=\"M50 27C42 18 30 16 21 21c5 10 17 13 29 6Z\" stroke=\"#f0a03c\"/>\n  <path d=\"M50 27c8-9 20-11 29-6-5 10-17 13-29 6Z\" stroke=\"#f0a03c\"/>\n</svg>"
+          }
+        },
+        "ingredient_2": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Orange peel",
+            "description": "Natural degreaser and fresh citrus lift",
+            "custom_svg": "<svg viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#ece6f7\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <circle cx=\"45\" cy=\"58\" r=\"23\"/>\n  <path d=\"M45 35v46M22 58h46\" opacity=\".4\"/>\n  <path d=\"M29 42 61 74M61 42 29 74\" opacity=\".26\"/>\n  <path d=\"M62 28c13-1 20 10 15 20-4 8-15 9-19 2\" stroke=\"#f0a03c\"/>\n  <path d=\"M45 34c-3-8 2-15 10-16 1 9-3 15-10 16Z\" stroke=\"#f0a03c\"/>\n</svg>"
+          }
+        },
+        "ingredient_3": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Soap nut",
+            "description": "A traditional plant foaming agent",
+            "custom_svg": "<svg viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#ece6f7\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <circle cx=\"36\" cy=\"66\" r=\"16\"/>\n  <circle cx=\"64\" cy=\"69\" r=\"14\"/>\n  <circle cx=\"50\" cy=\"43\" r=\"14\"/>\n  <path d=\"M50 29V17\"/>\n  <path d=\"M50 21c-8-8-18-8-23-2 7 8 17 10 23 2Z\" stroke=\"#f0a03c\"/>\n  <path d=\"M31 60a5 5 0 0 1 4-4\" opacity=\".6\"/>\n  <path d=\"M46 38a5 5 0 0 1 4-4\" opacity=\".6\"/>\n</svg>"
+          }
+        },
+        "ingredient_4": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Neem",
+            "description": "Time-tested antibacterial from the tree",
+            "custom_svg": "<svg viewBox=\"0 0 100 100\" fill=\"none\" stroke=\"#ece6f7\" stroke-width=\"2\" stroke-linecap=\"round\" stroke-linejoin=\"round\">\n  <path d=\"M18 82C36 66 58 44 82 20\" stroke=\"#f0a03c\"/>\n  <path d=\"M27 73c-6-7-4-15 3-18 4 7 3 14-3 18Z\"/>\n  <path d=\"M31 69c8-4 15 0 16 8-8 2-14-1-16-8Z\"/>\n  <path d=\"M41 59c-6-7-4-16 3-19 4 7 3 15-3 19Z\"/>\n  <path d=\"M45 55c9-4 16 0 17 8-8 2-15-1-17-8Z\"/>\n  <path d=\"M56 44c-6-7-4-16 3-19 4 7 3 15-3 19Z\"/>\n  <path d=\"M60 40c9-4 16 0 17 8-8 2-15-1-17-8Z\"/>\n  <path d=\"M70 30c-5-7-3-15 4-18 3 7 2 14-4 18Z\"/>\n</svg>"
+          }
+        },
+        "ingredient_5": {
+          "type": "ingredient",
+          "settings": {
+            "title": "Lemongrass",
+            "description": "Clean fragrance with nothing synthetic",
+            "custom_svg": "<svg viewBox=\"0 0 100 100\" fill=\"none\">\n  <g fill=\"#ece6f7\" opacity=\".88\">\n    <path d=\"M50 88C44 62 39 42 24 15c15 27 22 47 29 73Z\"/>\n    <path d=\"M52 88C50 60 50 39 44 9c11 29 13 50 12 79Z\"/>\n    <path d=\"M54 88C56 60 60 40 74 13c-11 28-15 48-16 75Z\"/>\n    <path d=\"M56 88C60 64 68 48 86 27c-14 22-21 38-26 61Z\"/>\n    <path d=\"M48 88C44 66 36 50 18 30c14 21 22 36 27 58Z\"/>\n  </g>\n  <path d=\"M50 88h6\" stroke=\"#f0a03c\" stroke-width=\"2.4\" stroke-linecap=\"round\"/>\n</svg>"
+          }
+        }
+      },
+      "block_order": [
+        "ingredient_1",
+        "ingredient_2",
+        "ingredient_3",
+        "ingredient_4",
+        "ingredient_5"
+      ],
+      "settings": {}
+    },
+    "purelane_benefits": {
+      "type": "purelane-benefits",
+      "blocks": {
+        "benefit_1": {
+          "type": "benefit",
+          "settings": {
+            "title": "Less scrubbing",
+            "description": "A foaming formulation. The foam clings to grease and lifts it, so you wipe instead of scrub.",
+            "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"8\" cy=\"8.5\" r=\"3.2\"/><circle cx=\"16.4\" cy=\"6.6\" r=\"2.2\"/><circle cx=\"15\" cy=\"13\" r=\"2.8\"/><circle cx=\"8.6\" cy=\"15.6\" r=\"2.1\"/><path d=\"M4 21h16\"/></svg>",
+            "cta_label": "Learn more",
+            "cta_url": "#shop"
+          }
+        },
+        "benefit_2": {
+          "type": "benefit",
+          "settings": {
+            "title": "Clean ingredients",
+            "description": "No sulphates, no chlorine, no synthetic fragrance. Nothing on the label you would not want near your food.",
+            "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3 4.5 6v6.2c0 4.3 3.1 7.6 7.5 8.8 4.4-1.2 7.5-4.5 7.5-8.8V6L12 3Z\"/><path d=\"m9 12 2.2 2.2L15.4 10\"/></svg>",
+            "cta_label": "Learn more",
+            "cta_url": "#ingredients"
+          }
+        },
+        "benefit_3": {
+          "type": "benefit",
+          "settings": {
+            "title": "Safe around everyone",
+            "description": "Gentle on hands, safe around kids and pets, and it leaves no toxic residue on the surfaces you touch every day.",
+            "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 20s-7-4.4-7-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7 2.6c0 5-7 9.4-7 9.4Z\"/></svg>",
+            "cta_label": "Learn more",
+            "cta_url": "#proof"
+          }
+        }
+      },
+      "block_order": [
+        "benefit_1",
+        "benefit_2",
+        "benefit_3"
+      ],
+      "settings": {}
+    },
+    "purelane_tough_grime": {
+      "type": "purelane-tough-grime",
+      "blocks": {
+        "stat_1": {
+          "type": "stat",
+          "settings": {
+            "value": "99.9%",
+            "title": "Germ kill",
+            "description": "Tested against germs and bacteria"
+          }
+        },
+        "stat_2": {
+          "type": "stat",
+          "settings": {
+            "value": "0%",
+            "title": "Sulphates",
+            "description": "No SLS, chlorine or parabens"
+          }
+        },
+        "stat_3": {
+          "type": "stat",
+          "settings": {
+            "value": "100%",
+            "title": "Plant based",
+            "description": "Cleansers derived from plants"
+          }
+        },
+        "stat_4": {
+          "type": "stat",
+          "settings": {
+            "value": "4.8",
+            "title": "Rated",
+            "description": "Across 8,000+ verified reviews"
+          }
+        }
+      },
+      "block_order": [
+        "stat_1",
+        "stat_2",
+        "stat_3",
+        "stat_4"
+      ],
+      "settings": {
+        "product": "foaming-kitchen-cleaner"
+      }
+    },
+    "purelane_every_room": {
+      "type": "purelane-every-room",
+      "settings": {
+        "collection": "best-sellers"
+      }
+    },
+    "purelane_why_bundles": {
+      "type": "purelane-why-bundles",
+      "blocks": {
+        "wb1": { "type": "benefit", "settings": { "title": "Save up to 45%", "description": "Versus buying the same products separately", "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 3v18\"/><path d=\"M16.5 7.2C15.6 6 14 5.4 12 5.4c-2.4 0-4 1.1-4 2.9 0 2 1.7 2.7 4.2 3.3 2.7.6 4.3 1.4 4.3 3.4 0 1.9-1.7 3.1-4.5 3.1-2.2 0-3.8-.7-4.8-2\"/></svg>" } },
+        "wb2": { "type": "benefit", "settings": { "title": "One flat price", "description": "No calculators, no comparing carts", "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><rect x=\"4\" y=\"4\" width=\"16\" height=\"16\" rx=\"3.4\"/><path d=\"m8.4 12.2 2.4 2.4 4.8-5\"/></svg>" } },
+        "wb3": { "type": "benefit", "settings": { "title": "Curated by experts", "description": "Products picked to work well together", "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"m12 3.6 2.6 5.3 5.8.8-4.2 4.1 1 5.8-5.2-2.8-5.2 2.8 1-5.8L3.6 9.7l5.8-.8Z\"/></svg>" } },
+        "wb4": { "type": "benefit", "settings": { "title": "Free shipping always", "description": "Included on every bundle, all India", "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M2.6 16.4V7.2h10.2v9.2\"/><path d=\"M12.8 10.4h4l3.6 3.2v2.8h-7.6\"/><circle cx=\"6.6\" cy=\"18\" r=\"1.9\"/><circle cx=\"16.6\" cy=\"18\" r=\"1.9\"/></svg>" } }
+      },
+      "block_order": ["wb1", "wb2", "wb3", "wb4"]
+    },
+    "purelane_bundle_categories": {
+      "type": "purelane-bundle-categories",
+      "blocks": {
+        "cat1": { "type": "category", "settings": { "title": "Kitchen bundle", "description": "Grease, dishes & more", "product": "kitchen-essentials-bundle" } },
+        "cat2": { "type": "category", "settings": { "title": "Bathroom bundle", "description": "Deep clean & disinfect", "product": "hard-water-solution-kit" } },
+        "cat3": { "type": "category", "settings": { "title": "Laundry bundle", "description": "Softer, fresher wash", "product": "laundry-care-bundle" } },
+        "cat4": { "type": "category", "settings": { "title": "Hard water bundle", "description": "Melt away limescale", "product": "hard-water-solution-kit" } }
+      },
+      "block_order": ["cat1", "cat2", "cat3", "cat4"]
+    },
+    "purelane_trust_bar": {
+      "type": "purelane-trust-bar",
+      "blocks": {
+        "tb1": { "type": "trust_item", "settings": { "text": "Plant derived<br>formulas", "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21c0-6.5 3.5-11 8-12.5C20 15 16.5 20 12 21Z\"/><path d=\"M12 21C12 14.5 8.5 10 4 8.5 4 15 7.5 20 12 21Z\"/></svg>" } },
+        "tb2": { "type": "trust_item", "settings": { "text": "Recyclable<br>packaging", "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 8h16v11a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2Z\"/><path d=\"M4 8 6.5 3h11L20 8M9.5 12h5\"/></svg>" } },
+        "tb3": { "type": "trust_item", "settings": { "text": "Safe for<br>kids & pets", "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 20s-7-4.4-7-9.4A4.1 4.1 0 0 1 12 8a4.1 4.1 0 0 1 7 2.6c0 5-7 9.4-7 9.4Z\"/></svg>" } },
+        "tb4": { "type": "trust_item", "settings": { "text": "Made in<br>India", "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><circle cx=\"12\" cy=\"12\" r=\"8.6\"/><path d=\"M3.4 12h17.2M12 3.4c2.4 2.4 3.6 5.4 3.6 8.6S14.4 18.2 12 20.6c-2.4-2.4-3.6-5.4-3.6-8.6S9.6 5.8 12 3.4Z\"/></svg>" } }
+      },
+      "block_order": ["tb1", "tb2", "tb3", "tb4"]
+    },
+    "purelane_signup": {
+      "type": "purelane-signup",
+      "settings": {
+        "kicker": "Join the Purelane Club",
+        "heading": "Get ₹100 off your first bundle",
+        "description": "Plus first access to new launches and restocks.",
+        "cta_label": "Get my ₹100 off"
+      }
     }
   },
   "order": [
     "purelane_hero",
-    "purelane_product_grid",
+    "purelane_nature",
+    "purelane_benefits",
+    "purelane_tough_grime",
     "purelane_combos",
     "purelane_bundles",
-    "purelane_reviews"
+    "purelane_product_grid",
+    "purelane_every_room",
+    "purelane_why_bundles",
+    "purelane_bundle_categories",
+    "purelane_trust_bar",
+    "purelane_reviews",
+    "purelane_signup"
   ]
 }
-

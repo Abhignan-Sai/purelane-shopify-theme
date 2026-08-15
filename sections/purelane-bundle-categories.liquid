@@ -1,0 +1,124 @@
+{{ 'purelane-sections.css' | asset_url | stylesheet_tag }}
+{{ 'purelane-components.css' | asset_url | stylesheet_tag }}
+
+<section class="purelane-sec purelane-cats-wrap">
+  <div class="purelane-wrap">
+    <div class="purelane-panel-head">
+      {%- if section.settings.kicker != blank -%}
+        <span class="purelane-kicker">{{ section.settings.kicker }}</span>
+      {%- endif -%}
+      {%- if section.settings.heading != blank -%}
+        <h2 class="purelane-d2" style="margin-top: 12px; margin-bottom: 12px;">{{ section.settings.heading }}</h2>
+      {%- endif -%}
+    </div>
+    
+    <div class="purelane-cats">
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.url | default: '#' }}" class="purelane-glass purelane-cat" {{ block.shopify_attributes }}>
+          <div class="purelane-cat-ph">
+            {%- assign product = block.settings.product -%}
+            {%- if block.settings.image != blank -%}
+              <img src="{{ block.settings.image | image_url: width: 300 }}" alt="{{ block.settings.title | escape }}" loading="lazy" class="purelane-pimg" width="{{ block.settings.image.width }}" height="{{ block.settings.image.height }}">
+            {%- elsif product != blank and product.featured_media != blank -%}
+              <img src="{{ product.featured_media | image_url: width: 300 }}" alt="{{ block.settings.title | escape }}" loading="lazy" class="purelane-pimg" width="{{ product.featured_media.width }}" height="{{ product.featured_media.height }}">
+            {%- else -%}
+              {{ 'collection-1' | placeholder_svg_tag: 'purelane-pimg' }}
+            {%- endif -%}
+          </div>
+          <div class="purelane-cat-txt">
+            <h4>{{ block.settings.title | default: 'Bundle Name' }}</h4>
+            <p>{{ block.settings.description | default: 'Bundle description' }}</p>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Bundle Categories",
+  "settings": [
+    {
+      "type": "text",
+      "id": "kicker",
+      "label": "Kicker",
+      "default": "Bundle categories"
+    },
+    {
+      "type": "text",
+      "id": "heading",
+      "label": "Heading",
+      "default": "Find the right bundle for you"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image"
+        },
+        {
+          "type": "product",
+          "id": "product",
+          "label": "Product (used for image if Image is blank)"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "label": "Description"
+        },
+        {
+          "type": "url",
+          "id": "url",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Bundle Categories",
+      "blocks": [
+        {
+          "type": "category",
+          "settings": {
+            "title": "Kitchen bundle",
+            "description": "Grease, dishes & more"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Bathroom bundle",
+            "description": "Deep clean & disinfect"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Laundry bundle",
+            "description": "Softer, fresher wash"
+          }
+        },
+        {
+          "type": "category",
+          "settings": {
+            "title": "Hard water bundle",
+            "description": "Melt away limescale"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}

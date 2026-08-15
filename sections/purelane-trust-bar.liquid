@@ -1,0 +1,72 @@
+{{ 'purelane-sections.css' | asset_url | stylesheet_tag }}
+
+<section class="purelane-sec purelane-trust-wrap">
+  <div class="purelane-wrap">
+    <div class="purelane-glass purelane-trust-bar">
+      {%- for block in section.blocks -%}
+        <div class="purelane-trust-item" {{ block.shopify_attributes }}>
+          {%- if block.settings.custom_svg != blank -%}
+            {{ block.settings.custom_svg }}
+          {%- else -%}
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12l5 5L20 7"/></svg>
+          {%- endif -%}
+          <span>{{ block.settings.text }}</span>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Trust Bar",
+  "settings": [],
+  "blocks": [
+    {
+      "type": "trust_item",
+      "name": "Trust Item",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Trust feature"
+        },
+        {
+          "type": "html",
+          "id": "custom_svg",
+          "label": "Custom SVG Icon"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Trust Bar",
+      "blocks": [
+        {
+          "type": "trust_item",
+          "settings": {
+            "text": "Made in India",
+            "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M3 9h18M3 15h18M12 9v6\"/><circle cx=\"12\" cy=\"12\" r=\"2\"/></svg>"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "text": "Not tested on animals",
+            "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 21s-8-4.5-8-11a8 8 0 0 1 16 0c0 6.5-8 11-8 11z\"/><path d=\"M9 10a3 3 0 1 0 6 0\"/></svg>"
+          }
+        },
+        {
+          "type": "trust_item",
+          "settings": {
+            "text": "Ships carbon neutral",
+            "custom_svg": "<svg viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.8\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 11a9 9 0 0 1 9 9M4 4a16 16 0 0 1 16 16\"/><circle cx=\"5\" cy=\"19\" r=\"1\"/></svg>"
+          }
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
